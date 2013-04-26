@@ -1,21 +1,13 @@
-@variables screen { myMargin: 10px }
-
-@keyframes my_anim { from { opacity: 1; } to { opacity: 0; } }
-
-h1 {
-  margin-top: var(myMargin);
-  margin-right: var(myMargin);
-  background-image: -moz-linear-gradient(90deg, white, #c0c0c0);
+.left {
+	text-align: left;
+	color: green;
+	margin: 10em;
+	float: left;
 }
-
-#myP {
-  border: thin groove silver;
-}
-
-
-@media (max-width: 1024px) {
-    img {
-        left: 50%;
-        margin-left: -512px; 
-    }
+.right {
+	color: green;
+	margin: 10em;
+	float: right;
+	text-align: right;
+	font-weight: bold;
 }
