@@ -1,0 +1,18 @@
+{
+  "name": "genetic-css-minify",
+  "version": "0.0.1",
+  "author": "Jan Antala <support@nodejitsu.com>",
+  "description": "CSS minification based on genetic principes",
+  "keywords": [
+    "css",
+    "genetic",
+    "minify"
+  ],
+  "dependencies" : {
+    "css"   :  "*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.8"
+  }
+}
