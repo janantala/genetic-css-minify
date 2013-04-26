@@ -34,10 +34,12 @@ fs.readFile(file, function (err, data) {
 	// console.log(util.inspect(css.parse(cssString), false, null));
 
 	init(parseCSS(css.parse(cssString)));
+	minify();
 });
 
 var population = [];
 var populationLength = 50;
+var maxGenerations = 1000;
 
 var init = function(tree) {
 	var stylesheet = tree;
@@ -51,6 +53,32 @@ var init = function(tree) {
 
 	console.log(population);
 
+};
+
+var minify = function(){
+	var g = 0;
+	while (g < maxGenerations) {
+		g++;
+
+		var newPopulation = [];
+		while (newPopulation.length < populationLength) {
+			var stylesheet = tournament();
+			mutate(stylesheet);
+			newPopulation.push(stylesheet);
+		}
+	}
+};
+
+var tournament = function(){
+	var i1 = Math.floor(Math.random() * (populationLength));
+	var i2 = Math.floor(Math.random() * (populationLength));
+
+	if (population[i1].fitness > population[i2].fitness) {
+		return clone(population[i1]);
+	}
+	else {
+		return clone(population[i2]);
+	}
 };
 
 var getFitness = function(rules){
@@ -70,6 +98,17 @@ var getFitness = function(rules){
 
 var clone = function(stylesheet) {
 	return JSON.parse(JSON.stringify(stylesheet));
+};
+
+var mutate = function(stylesheet){
+	if (Math.random() < 0.5){
+		mutateSplit();
+	}
+	else {
+		mutateMerge();
+	}
+
+	getFitness(stylesheet.rules);
 };
 
 var mutateMerge = function(){
