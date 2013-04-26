@@ -36,11 +36,20 @@ fs.readFile(file, function (err, data) {
 	init(parseCSS(css.parse(cssString)));
 });
 
+var population = [];
+var populationLength = 50;
+
 var init = function(tree) {
 	var stylesheet = tree;
 	stylesheet.fitness = getFitness(stylesheet.rules);
 
 	console.log(stylesheet);
+
+	for (var i=0; i<populationLength; i++){
+		population.push(clone(stylesheet));
+	}
+
+	console.log(population);
 
 };
 
@@ -57,6 +66,10 @@ var getFitness = function(rules){
 
 	fitness = 100 / ( 0.5 * s + d );
 	return fitness;
+};
+
+var clone = function(stylesheet) {
+	return JSON.parse(JSON.stringify(stylesheet));
 };
 
 var mutateMerge = function(){
