@@ -6,17 +6,17 @@ var file = 'style.css';
 
 
 
-var parseCSS = function(tree){
+var parseCSS = function(tree) {
 
 	var stylesheet = {};
 	stylesheet.rules = [];
 	stylesheet.fitness = Infinity;
 
-	tree.stylesheet.rules.forEach(function(rule){
+	tree.stylesheet.rules.forEach(function(rule) {
 		var r = {};
 		r.selectors = rule.selectors;
 		var d = [];
-		rule.declarations && rule.declarations.forEach(function(declaration){
+		rule.declarations && rule.declarations.forEach(function(declaration) {
 			d.push(declaration.property + ':' + declaration.value + ';');
 		});
 		r.declarations = d;
@@ -43,11 +43,11 @@ var maxGenerations = 1000;
 
 var init = function(tree) {
 	var stylesheet = tree;
-	stylesheet.fitness = getFitness(stylesheet.rules);
+	stylesheet.fitness = getFitness(stylesheet);
 
 	console.log(stylesheet);
 
-	for (var i=0; i<populationLength; i++){
+	for (var i=0; i<populationLength; i++) {
 		population.push(clone(stylesheet));
 	}
 
@@ -55,21 +55,40 @@ var init = function(tree) {
 
 };
 
-var minify = function(){
+var minify = function() {
 	var g = 0;
 	while (g < maxGenerations) {
 		g++;
+		sort();
 
 		var newPopulation = [];
 		while (newPopulation.length < populationLength) {
-			var stylesheet = tournament();
-			mutate(stylesheet);
-			newPopulation.push(stylesheet);
+			var ss = crossover(tournament(), tournament());
+			mutate(ss.s1);
+			mutate(ss.s2);
+
+			getFitness(ss.s1);
+			getFitness(ss.s2);
+
+			newPopulation.push(ss.s1);
+			newPopulation.push(ss.s2);
 		}
 	}
 };
 
-var tournament = function(){
+function compare(a, b) {
+	if (a.fitness < b.fitness)
+		return -1;
+	if (a.fitness > b.fitness)
+		return 1;
+	return 0;
+}
+
+var sort = function() {
+	population.sort(compare);
+};
+
+var tournament = function() {
 	var i1 = Math.floor(Math.random() * (populationLength));
 	var i2 = Math.floor(Math.random() * (populationLength));
 
@@ -81,45 +100,45 @@ var tournament = function(){
 	}
 };
 
-var getFitness = function(rules){
+var getFitness = function(stylesheet) {
 	var fitness = Infinity;
 	var s = 0;
 	var d = 0;
-	rules.forEach(function(rule){
+	stylesheet.rules.forEach(function(rule) {
 		s += rule.selectors.length;
 	});
-	rules.forEach(function(rule){
+	stylesheet.rules.forEach(function(rule) {
 		d += rule.declarations.length;
 	});
 
-	fitness = 100 / ( 0.5 * s + d );
-	return fitness;
+	stylesheet.fitness = 100 / ( 0.5 * s + d );
 };
 
 var clone = function(stylesheet) {
 	return JSON.parse(JSON.stringify(stylesheet));
 };
 
-var mutate = function(stylesheet){
-	if (Math.random() < 0.5){
-		mutateSplit();
+var mutate = function(stylesheet) {
+	if (Math.random() < 0.3) {
+		mutateSplit(stylesheet);
 	}
 	else {
-		mutateMerge();
+		mutateMerge(stylesheet);
 	}
-
-	getFitness(stylesheet.rules);
 };
 
-var mutateMerge = function(){
-
-};
-
-var mutateSplit = function(){
+var mutateMerge = function(stylesheet) {
 
 };
 
-var crossover = function(){
+var mutateSplit = function(stylesheet) {
 
+};
+
+var crossover = function(s1, s2) {
+	return {
+		's1': s1,
+		's2': s2
+	};
 };
 
