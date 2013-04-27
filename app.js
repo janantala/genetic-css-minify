@@ -40,10 +40,11 @@ fs.readFile(file, function (err, data) {
 var population = [];
 var populationLength = 50;
 var maxGenerations = 1000;
+var elites = 2;
 
 var init = function(tree) {
 	var stylesheet = tree;
-	stylesheet.fitness = getFitness(stylesheet);
+	getFitness(stylesheet);
 
 	console.log(stylesheet);
 
@@ -57,11 +58,14 @@ var init = function(tree) {
 
 var minify = function() {
 	var g = 0;
+	sort();
+
 	while (g < maxGenerations) {
 		g++;
-		sort();
 
 		var newPopulation = [];
+		addElites(newPopulation);
+
 		while (newPopulation.length < populationLength) {
 			var ss = crossover(tournament(), tournament());
 			mutate(ss.s1);
@@ -73,16 +77,24 @@ var minify = function() {
 			newPopulation.push(ss.s1);
 			newPopulation.push(ss.s2);
 		}
+
+		sort();
 	}
 };
 
-function compare(a, b) {
+var addElites = function(newPopulation) {
+	for (var i=0; i<elites; i++) {
+		newPopulation.push(clone(population[i]));
+	}
+};
+
+var compare = function(a, b) {
 	if (a.fitness < b.fitness)
 		return -1;
 	if (a.fitness > b.fitness)
 		return 1;
 	return 0;
-}
+};
 
 var sort = function() {
 	population.sort(compare);
