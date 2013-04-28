@@ -126,12 +126,12 @@ var getFitness = function(stylesheet) {
 	stylesheet.fitness = 100 / ( 0.5 * s + d );
 };
 
-var clone = function(stylesheet) {
-	return JSON.parse(JSON.stringify(stylesheet));
+var clone = function(a) {
+	return JSON.parse(JSON.stringify(a));
 };
 
 var mutate = function(stylesheet) {
-	if (Math.random() < 0.3) {
+	if (Math.random() < 0.2) {
 		mutateSplit(stylesheet);
 	}
 	else {
@@ -140,14 +140,38 @@ var mutate = function(stylesheet) {
 };
 
 var mutateMerge = function(stylesheet) {
+	var i1 = Math.floor(Math.random() * (stylesheet.rules));
+	var i2 = Math.floor(Math.random() * (stylesheet.rules));
+	var r1 = stylesheet.rules[i1];
+	var r2 = stylesheet.rules[i2];
 
 };
 
 var mutateSplit = function(stylesheet) {
+	var i1 = Math.floor(Math.random() * (stylesheet.rules));
+	var r1 = stylesheet.rules.splice(i1,1);
 
+	var selectors = r1.selectors;
+	if (selectors.length > 1) {
+		selectors.forEach(function(selector){
+			var added = false;
+			stylesheet.rules.forEach(function(rule){
+				if ((rule.selectors.length == 1) && (rule.selectors[0] = selector)) {
+					rule.declarations = rule.declarations.concat(clone(r1.declarations));
+				}
+			});
+			if (!added) {
+				stylesheet.rules.push({
+					'selectors': [clone(selector)],
+					'declarations': [clone(r1.declarations)]
+				});
+			}
+		});
+	}
 };
 
 var crossover = function(s1, s2) {
+
 	return {
 		's1': s1,
 		's2': s2
