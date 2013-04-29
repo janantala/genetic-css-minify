@@ -1,7 +1,6 @@
 var fs = require('fs');
 var util = require('util');
 var css = require('css');
-
 var file = 'style.css';
 
 
@@ -38,21 +37,21 @@ fs.readFile(file, function (err, data) {
 });
 
 var population = [];
-var populationLength = 50;
-var maxGenerations = 1000;
+var populationLength = 10;
+var maxGenerations = 100;
 var elites = 2;
 
 var init = function(tree) {
 	var stylesheet = tree;
 	getFitness(stylesheet);
 
-	console.log(stylesheet);
+	// console.log(stylesheet);
 
 	for (var i=0; i<populationLength; i++) {
 		population.push(clone(stylesheet));
 	}
 
-	console.log(population);
+	// console.log(population);
 
 };
 
@@ -78,7 +77,11 @@ var minify = function() {
 			newPopulation.push(ss.s2);
 		}
 
+		population = newPopulation;
 		sort();
+		console.log('============');
+		// console.log(population);
+		console.log(util.inspect(population, false, null));
 	}
 };
 
@@ -89,9 +92,9 @@ var addElites = function(newPopulation) {
 };
 
 var compare = function(a, b) {
-	if (a.fitness < b.fitness)
-		return -1;
 	if (a.fitness > b.fitness)
+		return -1;
+	if (a.fitness < b.fitness)
 		return 1;
 	return 0;
 };
@@ -140,32 +143,40 @@ var mutate = function(stylesheet) {
 };
 
 var mutateMerge = function(stylesheet) {
-	var i1 = Math.floor(Math.random() * (stylesheet.rules));
-	var i2 = Math.floor(Math.random() * (stylesheet.rules));
+	var i1 = Math.floor(Math.random() * (stylesheet.rules.length));
+	var i2 = Math.floor(Math.random() * (stylesheet.rules.length));
 	var r1 = stylesheet.rules[i1];
 	var r2 = stylesheet.rules[i2];
 
 };
 
 var mutateSplit = function(stylesheet) {
-	var i1 = Math.floor(Math.random() * (stylesheet.rules));
-	var r1 = stylesheet.rules.splice(i1,1);
+	var i1 = Math.floor(Math.random() * (stylesheet.rules.length));
+	var r1 = stylesheet.rules.splice(i1,1)[0];
 
 	var selectors = r1.selectors;
 	if (selectors.length > 1) {
 		selectors.forEach(function(selector){
 			var added = false;
 			stylesheet.rules.forEach(function(rule){
-				if ((rule.selectors.length == 1) && (rule.selectors[0] = selector)) {
+				if ((rule.selectors.length == 1) && (rule.selectors[0] === selector)) {
 					rule.declarations = rule.declarations.concat(clone(r1.declarations));
+					added = true;
 				}
 			});
 			if (!added) {
 				stylesheet.rules.push({
 					'selectors': [clone(selector)],
-					'declarations': [clone(r1.declarations)]
+					'declarations': clone(r1.declarations)
 				});
 			}
+
+		});
+	}
+	else {
+		stylesheet.rules.push({
+			'selectors': [clone(selectors[0])],
+			'declarations': clone(r1.declarations)
 		});
 	}
 };

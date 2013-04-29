@@ -4,10 +4,15 @@
 	margin: 10em;
 	float: left;
 }
+
 .right {
 	color: green;
 	margin: 10em;
 	float: right;
 	text-align: right;
 	font-weight: bold;
+}
+
+.a, .b {
+	color: black;
 }
