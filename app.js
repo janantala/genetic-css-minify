@@ -14,6 +14,20 @@ Array.prototype.remove = function(a) {
     return this;
 };
 
+var checkArrays = function( arrA, arrB ){
+
+    if(arrA.length !== arrB.length) return false;
+
+    var cA = arrA.slice().sort();
+    var cB = arrB.slice().sort();
+
+    for(var i=0;i<cA.length;i++){
+         if(cA[i]!==cB[i]) return false;
+    }
+
+    return true;
+};
+
 var parseCSS = function(tree) {
 
 	var stylesheet = {};
@@ -46,9 +60,9 @@ fs.readFile(file, function (err, data) {
 });
 
 var population = [];
-var populationLength = 1;
-var maxGenerations = 2;
-var elites = 0;
+var populationLength = 10;
+var maxGenerations = 20;
+var elites = 2;
 
 var init = function(tree) {
 	var stylesheet = tree;
@@ -77,13 +91,13 @@ var minify = function() {
 		while (newPopulation.length < populationLength) {
 			var ss = crossover(tournament(), tournament());
 			mutate(ss.s1);
-			// mutate(ss.s2);
+			mutate(ss.s2);
 
 			getFitness(ss.s1);
-			// getFitness(ss.s2);
+			getFitness(ss.s2);
 
 			newPopulation.push(ss.s1);
-			// newPopulation.push(ss.s2);
+			newPopulation.push(ss.s2);
 		}
 
 		population = newPopulation;
@@ -143,7 +157,7 @@ var clone = function(a) {
 };
 
 var mutate = function(stylesheet) {
-	if (Math.random() < 0.0) {
+	if (Math.random() < 0.2) {
 		mutateSplit(stylesheet);
 	}
 	else {
@@ -183,10 +197,21 @@ var mutateMerge = function(stylesheet) {
 		declarations1.remove(mayMerge);
 		declarations2.remove(mayMerge);
 
-		stylesheet.rules.push({
+		var o = {
 			'selectors': clone(selectors1).concat(clone(selectors2)),
 			'declarations': clone(mayMerge)
+		};
+
+		var added = false;
+		stylesheet.rules.forEach(function(rule){
+			if (checkArrays(rule.selectors, o.selectors)){
+				rule.declarations = rule.declarations.concat(clone(o.declarations));
+				added = true;
+			}
 		});
+		if (!added) {
+			stylesheet.rules.push(o);
+		}
 	}
 
 	console.log(stylesheet);
