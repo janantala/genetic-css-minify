@@ -1,7 +1,7 @@
 var fs = require('fs');
 var util = require('util');
 var css = require('css');
-var file = 'style.css';
+var file = 'sme_article.css';
 
 Array.prototype.remove = function(a) {
     var what, L = a.length, ax;
@@ -60,8 +60,8 @@ fs.readFile(file, function (err, data) {
 });
 
 var population = [];
-var populationLength = 10;
-var maxGenerations = 20;
+var populationLength = 50;
+var maxGenerations = 1000;
 var elites = 2;
 
 var init = function(tree) {
@@ -103,9 +103,10 @@ var minify = function() {
 		population = newPopulation;
 		sort();
 		console.log('============');
-		// console.log(population);
-		console.log(util.inspect(population, false, null));
+		console.log(population[0].fitness);
 	}
+
+	console.log(util.inspect(population[0], false, null));
 };
 
 var addElites = function(newPopulation) {
@@ -155,7 +156,7 @@ var getFitness = function(stylesheet) {
 		});
 	});
 
-	stylesheet.fitness = 100000 / ( s + d );
+	stylesheet.fitness = - ( s + d );
 };
 
 var clone = function(a) {
@@ -186,8 +187,6 @@ var mutateMerge = function(stylesheet) {
 	var declarations1 = r1.declarations;
 	var declarations2 = r2.declarations;
 
-	console.log(selectors1);
-	console.log(selectors2);
 
 	var mayMerge = [];
 	declarations2.forEach(function(d2){
@@ -198,7 +197,6 @@ var mutateMerge = function(stylesheet) {
 		});
 	});
 
-	console.log(mayMerge);
 	if (mayMerge.length) {
 		declarations1.remove(mayMerge);
 		declarations2.remove(mayMerge);
@@ -219,8 +217,6 @@ var mutateMerge = function(stylesheet) {
 			stylesheet.rules.push(o);
 		}
 	}
-
-	console.log(stylesheet);
 
 };
 
