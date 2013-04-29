@@ -143,13 +143,19 @@ var getFitness = function(stylesheet) {
 	var s = 0;
 	var d = 0;
 	stylesheet.rules.forEach(function(rule) {
-		s += rule.selectors.length;
+		s += rule.selectors.length - 1;
+		rule.selectors.forEach(function(sel) {
+			s += sel.length;
+		});
 	});
 	stylesheet.rules.forEach(function(rule) {
-		d += rule.declarations.length;
+		d += 2;
+		rule.declarations.forEach(function(dec) {
+			d += dec.length;
+		});
 	});
 
-	stylesheet.fitness = 100 / ( 0.5 * s + d );
+	stylesheet.fitness = 100000 / ( s + d );
 };
 
 var clone = function(a) {
