@@ -3,7 +3,16 @@ var util = require('util');
 var css = require('css');
 var file = 'style.css';
 
-
+Array.prototype.remove = function(a) {
+    var what, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
 
 var parseCSS = function(tree) {
 
@@ -37,9 +46,9 @@ fs.readFile(file, function (err, data) {
 });
 
 var population = [];
-var populationLength = 10;
-var maxGenerations = 100;
-var elites = 2;
+var populationLength = 1;
+var maxGenerations = 2;
+var elites = 0;
 
 var init = function(tree) {
 	var stylesheet = tree;
@@ -68,13 +77,13 @@ var minify = function() {
 		while (newPopulation.length < populationLength) {
 			var ss = crossover(tournament(), tournament());
 			mutate(ss.s1);
-			mutate(ss.s2);
+			// mutate(ss.s2);
 
 			getFitness(ss.s1);
-			getFitness(ss.s2);
+			// getFitness(ss.s2);
 
 			newPopulation.push(ss.s1);
-			newPopulation.push(ss.s2);
+			// newPopulation.push(ss.s2);
 		}
 
 		population = newPopulation;
@@ -134,7 +143,7 @@ var clone = function(a) {
 };
 
 var mutate = function(stylesheet) {
-	if (Math.random() < 0.2) {
+	if (Math.random() < 0.0) {
 		mutateSplit(stylesheet);
 	}
 	else {
@@ -147,6 +156,40 @@ var mutateMerge = function(stylesheet) {
 	var i2 = Math.floor(Math.random() * (stylesheet.rules.length));
 	var r1 = stylesheet.rules[i1];
 	var r2 = stylesheet.rules[i2];
+
+	if (r1 == r2) {
+		return false;
+	}
+
+	var selectors1 = r1.selectors;
+	var selectors2 = r2.selectors;
+	var declarations1 = r1.declarations;
+	var declarations2 = r2.declarations;
+
+	console.log(selectors1);
+	console.log(selectors2);
+
+	var mayMerge = [];
+	declarations2.forEach(function(d2){
+		declarations1.forEach(function(d1){
+			if (d1 === d2) {
+				mayMerge.push(clone(d1));
+			}
+		});
+	});
+
+	console.log(mayMerge);
+	if (mayMerge.length) {
+		declarations1.remove(mayMerge);
+		declarations2.remove(mayMerge);
+
+		stylesheet.rules.push({
+			'selectors': clone(selectors1).concat(clone(selectors2)),
+			'declarations': clone(mayMerge)
+		});
+	}
+
+	console.log(stylesheet);
 
 };
 
