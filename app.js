@@ -53,7 +53,7 @@ var parseCSS = function(tree) {
 		});
 		r.declarations = d;
 
-		rule.selectors && rule.declarations && stylesheet.rules.push(r);
+		rule.selectors && rule.declarations && rule.declarations.length && stylesheet.rules.push(r);
 	});
 
 	return stylesheet;
@@ -116,10 +116,10 @@ var getFitness = function(stylesheet) {
 
 var mutate = function(stylesheet) {
 	var random = Math.random();
-	if (random < 0.1) {
+	if (random < 0.2) {
 		mutateSplit(stylesheet);
 	}
-	else if (random < 0.5) {
+	else if (random < 1.0) {
 		mutateMerge(stylesheet);
 	}
 };
@@ -302,9 +302,24 @@ Q.fcall(function(){
  */
 
 .then(function(tree){
-	console.log('Saving:', minFile);
 	console.log(util.inspect(tree, false, null));
+	var css = '';
+	tree.rules.forEach(function(rule) {
+		css += rule.selectors.join(',');
+		css += '{';
+		css += rule.declarations.join('');
+		css += '}';
+		css += '\n';
+	});
+	return css;
+})
+.then(function(css){
+	console.log('Saving:', minFile);
+	return Q.nfcall(fs.writeFile, minFile, css);
 
+})
+.then(function(){
+	console.log('Done:', minFile);
 }, function (error) {
 	console.log(error)
 	process.exit(1);
