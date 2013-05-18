@@ -9,7 +9,8 @@
     "minify"
   ],
   "dependencies" : {
-    "css"   :  "*"
+    "css"   :  "*",
+    "q": "*"
   },
   "license": "MIT",
   "engines": {

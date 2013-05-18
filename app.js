@@ -1,4 +1,5 @@
 var fs = require('fs');
+var Q = require('q');
 var util = require('util');
 var css = require('css');
 var file = 'sme_article.css';
@@ -49,65 +50,6 @@ var parseCSS = function(tree) {
 	return stylesheet;
 };
 
-fs.readFile(file, function (err, data) {
-	if (err) throw err;
-	var cssString = data.toString();
-
-	// console.log(util.inspect(css.parse(cssString), false, null));
-
-	init(parseCSS(css.parse(cssString)));
-	minify();
-});
-
-var population = [];
-var populationLength = 50;
-var maxGenerations = 1000;
-var elites = 2;
-
-var init = function(tree) {
-	var stylesheet = tree;
-	getFitness(stylesheet);
-
-	// console.log(stylesheet);
-
-	for (var i=0; i<populationLength; i++) {
-		population.push(clone(stylesheet));
-	}
-
-	// console.log(population);
-
-};
-
-var minify = function() {
-	var g = 0;
-	sort();
-
-	while (g < maxGenerations) {
-		g++;
-
-		var newPopulation = [];
-		addElites(newPopulation);
-
-		while (newPopulation.length < populationLength) {
-			var ss = crossover(tournament(), tournament());
-			mutate(ss.s1);
-			mutate(ss.s2);
-
-			getFitness(ss.s1);
-			getFitness(ss.s2);
-
-			newPopulation.push(ss.s1);
-			newPopulation.push(ss.s2);
-		}
-
-		population = newPopulation;
-		sort();
-		console.log('============');
-		console.log(population[0].fitness);
-	}
-
-	console.log(util.inspect(population[0], false, null));
-};
 
 var addElites = function(newPopulation) {
 	for (var i=0; i<elites; i++) {
@@ -258,4 +200,70 @@ var crossover = function(s1, s2) {
 		's2': s2
 	};
 };
+
+
+
+/*
+	Algorithm
+ */
+
+var population = [];
+var populationLength = 50;
+var maxGenerations = 1000;
+var elites = 2;
+
+Q.nfcall(fs.readFile, file)
+.then(function(data){
+	return data.toString();
+})
+.then(function(cssString){
+	// console.log(util.inspect(css.parse(cssString), false, null));
+	return css.parse(cssString);
+})
+.then(function(css){
+	return parseCSS(css);
+})
+.then(function(tree){
+	var stylesheet = tree;
+	getFitness(stylesheet);
+
+	for (var i=0; i<populationLength; i++) {
+		population.push(clone(stylesheet));
+	}
+})
+.then(function(){
+	var g = 0;
+	sort();
+
+	while (g < maxGenerations) {
+		g++;
+
+		var newPopulation = [];
+		addElites(newPopulation);
+
+		while (newPopulation.length < populationLength) {
+			var ss = crossover(tournament(), tournament());
+			mutate(ss.s1);
+			mutate(ss.s2);
+
+			getFitness(ss.s1);
+			getFitness(ss.s2);
+
+			newPopulation.push(ss.s1);
+			newPopulation.push(ss.s2);
+		}
+
+		population = newPopulation;
+		sort();
+		console.log('============');
+		console.log(population[0].fitness);
+	}
+
+	console.log(util.inspect(population[0], false, null));
+
+}, function (error) {
+	console.log(error)
+	process.exit(1);
+})
+.done();
 
