@@ -2,31 +2,40 @@ var fs = require('fs');
 var Q = require('q');
 var util = require('util');
 var css = require('css');
-var file = 'sme_article.css';
+
+var minFile;
+
+/*
+	general functions
+ */
 
 Array.prototype.remove = function(a) {
-    var what, L = a.length, ax;
-    while (L && this.length) {
-        what = a[--L];
-        while ((ax = this.indexOf(what)) !== -1) {
-            this.splice(ax, 1);
-        }
-    }
-    return this;
+	var what, L = a.length, ax;
+	while (L && this.length) {
+		what = a[--L];
+		while ((ax = this.indexOf(what)) !== -1) {
+			this.splice(ax, 1);
+		}
+	}
+	return this;
+};
+
+var clone = function(a) {
+	return JSON.parse(JSON.stringify(a));
 };
 
 var checkArrays = function( arrA, arrB ){
 
-    if(arrA.length !== arrB.length) return false;
+	if (arrA.length !== arrB.length) return false;
 
-    var cA = arrA.slice().sort();
-    var cB = arrB.slice().sort();
+	var cA = arrA.slice().sort();
+	var cB = arrB.slice().sort();
 
-    for(var i=0;i<cA.length;i++){
-         if(cA[i]!==cB[i]) return false;
-    }
+	for(var i=0; i<cA.length; i++){
+		if(cA[i] !== cB[i]) return false;
+	}
 
-    return true;
+	return true;
 };
 
 var parseCSS = function(tree) {
@@ -50,6 +59,9 @@ var parseCSS = function(tree) {
 	return stylesheet;
 };
 
+/*
+	genetic functions
+ */
 
 var addElites = function(newPopulation) {
 	for (var i=0; i<elites; i++) {
@@ -101,15 +113,13 @@ var getFitness = function(stylesheet) {
 	stylesheet.fitness = - ( s + d );
 };
 
-var clone = function(a) {
-	return JSON.parse(JSON.stringify(a));
-};
 
 var mutate = function(stylesheet) {
-	if (Math.random() < 0.2) {
+	var random = Math.random();
+	if (random < 0.1) {
 		mutateSplit(stylesheet);
 	}
-	else {
+	else if (random < 0.5) {
 		mutateMerge(stylesheet);
 	}
 };
@@ -212,7 +222,21 @@ var populationLength = 50;
 var maxGenerations = 1000;
 var elites = 2;
 
-Q.nfcall(fs.readFile, file)
+/*
+	read file and parse CSS
+ */
+
+Q.fcall(function(){
+	var file = process.argv[2];
+	if (!file) throw new Error('CSS file not specified!');
+	return file;
+})
+.then(function(file){
+	console.log('Parsing:', file);
+	var prefix = file.split(/css$/)[0];
+	minFile = prefix ? (prefix + 'min.css') : 'min.css';
+	return Q.nfcall(fs.readFile, file);
+})
 .then(function(data){
 	return data.toString();
 })
@@ -223,6 +247,11 @@ Q.nfcall(fs.readFile, file)
 .then(function(css){
 	return parseCSS(css);
 })
+
+/*
+	init
+ */
+
 .then(function(tree){
 	var stylesheet = tree;
 	getFitness(stylesheet);
@@ -231,7 +260,13 @@ Q.nfcall(fs.readFile, file)
 		population.push(clone(stylesheet));
 	}
 })
+
+/*
+	minification process
+ */
+
 .then(function(){
+	console.log('Minifying...');
 	var g = 0;
 	sort();
 
@@ -256,10 +291,19 @@ Q.nfcall(fs.readFile, file)
 		population = newPopulation;
 		sort();
 		console.log('============');
-		console.log(population[0].fitness);
+		console.log(g, population[0].fitness);
 	}
 
-	console.log(util.inspect(population[0], false, null));
+	return population[0];
+})
+
+/*
+	save min css file
+ */
+
+.then(function(tree){
+	console.log('Saving:', minFile);
+	console.log(util.inspect(tree, false, null));
 
 }, function (error) {
 	console.log(error)
