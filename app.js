@@ -6,6 +6,23 @@ var css = require('css');
 var minFile;
 
 /*
+	Genetic CSS minify
+	run: $ node app.js your/css/file.css
+
+	@populationLength: total number of stylesheets in one population
+	@maxGenerations: maximum generations of algorithm
+	@mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
+	@elites: number of elites which are automaticaly passed into a new generation
+ */
+
+var population = [];
+
+var populationLength = 50;
+var maxGenerations = 1000;
+var mutateLine = 0.2;
+var elites = 2;
+
+/*
 	general functions
  */
 
@@ -116,7 +133,7 @@ var getFitness = function(stylesheet) {
 
 var mutate = function(stylesheet) {
 	var random = Math.random();
-	if (random < 0.2) {
+	if (random < mutateLine) {
 		mutateSplit(stylesheet);
 	}
 	else if (random < 1.0) {
@@ -212,15 +229,14 @@ var crossover = function(s1, s2) {
 };
 
 
-
 /*
-	Algorithm
+	Algorithm:
+	- read file and parse CSS
+	- create an initial population
+	- minification process (while not finished loop)
+	- create a min css and save a file
  */
 
-var population = [];
-var populationLength = 50;
-var maxGenerations = 1000;
-var elites = 2;
 
 /*
 	read file and parse CSS
@@ -249,7 +265,7 @@ Q.fcall(function(){
 })
 
 /*
-	init
+	initial population
  */
 
 .then(function(tree){
@@ -298,7 +314,7 @@ Q.fcall(function(){
 })
 
 /*
-	save min css file
+	create a min css and save a file
  */
 
 .then(function(tree){
