@@ -22,7 +22,7 @@ You can change these parameters:
 We use tournament method of size 2 for subject selection.
 
 ### Crossover
-There is no crossover due to very differences between stylesheet in population.
+There is no crossover due to big differences between stylesheet in population.
 
 ### Mutation
 There are 2 types of mutation:
