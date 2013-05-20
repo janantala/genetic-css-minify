@@ -15,12 +15,13 @@ var minFile;
 	@elites: number of elites which are automaticaly passed into a new generation
  */
 
-var population = [];
-
 var populationLength = 50;
 var maxGenerations = 1000;
 var mutateLine = 0.2;
 var elites = 2;
+
+var population = [];
+var cssSize = 0;
 
 /*
 	general functions
@@ -110,6 +111,25 @@ var tournament = function() {
 	}
 };
 
+var countSize = function(stylesheet) {
+	var s = 0;
+	var d = 0;
+	stylesheet.rules.forEach(function(rule) {
+		s += rule.selectors.length - 1;
+		rule.selectors.forEach(function(sel) {
+			s += sel.length;
+		});
+	});
+	stylesheet.rules.forEach(function(rule) {
+		d += 2;
+		rule.declarations.forEach(function(dec) {
+			d += dec.length;
+		});
+	});
+
+	cssSize = s + d;
+}
+
 var getFitness = function(stylesheet) {
 	var fitness = Infinity;
 	var s = 0;
@@ -127,7 +147,7 @@ var getFitness = function(stylesheet) {
 		});
 	});
 
-	stylesheet.fitness = - ( s + d );
+	stylesheet.fitness = cssSize - ( s + d );
 };
 
 
@@ -268,9 +288,9 @@ Q.fcall(function(){
 	initial population
  */
 
-.then(function(tree){
-	var stylesheet = tree;
-	getFitness(stylesheet);
+.then(function(stylesheet){
+	countSize(stylesheet);
+	stylesheet.fitness = 0;
 
 	for (var i=0; i<populationLength; i++) {
 		population.push(clone(stylesheet));
