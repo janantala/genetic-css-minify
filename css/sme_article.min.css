@@ -1,138 +1,137 @@
+.articlec{font-family:Verdana, Arial, sans-serif;font-size:12px;line-height:1.7em;}
+.articlec h1{line-height:1.2em;}
+.articlec h4{font-size:1.2em;}
+.articlec img{margin:5px 5px 5px 5px;}
 .articlec ul,.articlec ol{margin:10px;padding-left:15px;}
-.articlec ul.more{list-style:none;padding-left:5px;}
+.articlec ul.more li{padding-bottom:4px;}
+.articlec ul.disc li{padding-bottom:2px;}
 .articlec ul.disc a,.articlec ul.more a{text-decoration:none;}
 .articlec ul.disc a:hover,.articlec ul.more a:hover{text-decoration:underline;}
 .articlec ul a{color:#000;}
-.articlec .autor_line{color:#777;}
+.articlec em{color:#444;font-style:italic;}
 .articlec .autor_line .copyr{padding:2px 0px 2px 0px;font-size:9px !important;}
-.disc a{}
+.articlec .autor_line .copyr A{text-decoration:none;color:#777;}
+.articlec .autor_line .copyr A:hover{text-decoration:underline;}
+.articlec .small{font-size:0.9em;}
+.articlec td.num{text-align:right;}
+.articlec tr.vis1{background-color:#EEAAAA;color:#FFF;}
+.articlec TH{background:#D6D6D6;}
+.articlec td{padding:0.2em 0.7em 0.3em 0.7em;color:#333333;border-right:1px solid #CECECE;}
+.articlec .art-perex{color:#666;}
+#floatboxw{float:right;width:334px;border-bottom:1px solid #CECECE;color:#333333;font-size:12px;margin-right:-8px;}
+#floatboxw H3{padding:0px 0px 2px 0px;margin:0px;}
+#floatboxw .foto-info{padding-top:4px;}
 .floatbox.extra{background:none;border:none;}
-.floatbox.tabbed{padding:0px 0px 5px 0px;}
+.floatbox.extra2{background:none;border:none;padding-left:0px;padding-right:0px;}
 .floatbox h5,.floattabs h5{color:#990003;font-size:1.2em;margin:5px 0px 10px 0px;}
 .floatbox p{margin:0px 0px 10px 0px;line-height:1.3em;}
-.floatbox li{font-weight:normal;padding-bottom:10px;}
 .floatbox li a{font-weight:normal;}
 .floatbox.etarget,.article-etarget{padding-top:2px;font-size:11px;}
-#moreart img{border:none;}
+#otherartw{background:#F3F3F3;border-top:1px solid #999999;padding:5px 5px 10px 5px;margin-top:20px;}
+#otherartw.pages{border-right:none;}
+#otherartw.pages h5{margin:5px 0px 0px 5px;}
+.otherart{width:230px;font-size:1em;position:relative;}
+.otherart h5{margin:0px 0px 0px 10px;}
+.otherart.r{float:right;text-align:right;}
+.otherart.r h5{margin:0px 15px 0px 0px;}
+#moreart{padding:5px 0px 10px 0px;}
 #moreart h4{font-size:15px;margin-bottom:0px;}
-.disk2-box{font-size:12px;padding-left:38px;}
-.disk2-box h4{font-size:15px;}
+#moreart ul{font-size:13px;padding:4px 0px 0px 37px;margin:0px;font-weight:bold;font-family:Trebuchet MS, Helvetica;}
+#moreart li{padding:0px;}
+.disk2-box .go{padding-bottom:6px;}
 .disk2-box h5{font-size:15px;color:#898989;padding-bottom:0px;}
-.disk2-topbox{border-bottom:1px solid #f0f0f0;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;line-height:1.3em;}
-.articlec .quote{padding:10px;border:0;margin:0;border:1px solid #cccccc;border-left:10px solid #cccccc;background:#fbfbfb;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;width:470px;}
-.articlec .quote img{padding:0;border:0;margin:0;}
-.options a img{margin:-5px 3px 0 0 !important;}
+.disk2-topbox p{padding-top:0px;margin-top:0px;}
+.articlec .quote div{padding:0;border:0;padding:0;}
+.articlec .quote .portrait .text{float:right;width:390px;}
+.articlec .quote a{color:#9e0b13;}
+.options a{padding:0 0 0 2px;}
+.options a:hover{text-decoration:none;}
+.options a span:hover{text-decoration:none;}
+.share_more{background:White;border:1px solid #b8b8b8;left:645px;z-index:100;padding:10px 10px 0 10px;}
+.share_more ul{list-style:none;}
+.share_more ul li a{font-size:12px;color:#990003;}
 .share_more{left:720px;width:140px;}
+.disk_header{height:33px;background:url('/imgs/diskus_head_bg.gif') repeat-x;margin:20px 0 10px 0;}
+.disk_header_left{float:left;width:161px;height:33px;background:url('/imgs/diskus_head.gif') no-repeat;}
+.zajtrajsie_tab_box h5{color:#000000;font-size:18px;font-weight:normal;text-align:right;padding:0 20px 0 0;display:block;right:10px;top:15px;background:url('/imgs/ico_zajtrajsie_hdg.gif') no-repeat right;}
+.zajtrajsie_tabmodule ol li{padding-bottom:0px;}
+.cl-priloha-kviz .a1{color:green;padding-bottom:4px;}
+.cl-priloha-kviz .v{margin:0 6px 0 2px;}
+.cl-priloha-kviz .res-but{width:200px;background-color:#AA0000;border:1px solid #000;text-align:center;color:#FFF;}
+.articlec .shootyimg{border:none;}
+#suvcl-tab-box ul{margin:0;padding:0;}
+#suvcl-tab-box ul li.ia a{color:#616161;}
+#suvcl-tab-box ul li.ac a{text-decoration:none;}
+#suvcl-tab-box .ac{background:White;}
+.dalejnasme{float:right;}
+.dalejnasme IMG{border:none;margin:0px !important;}
+.fblk{float:left;}
+.art-refresh-but a:hover{background:#fff;}
+.art-refresh-but a .t{color:#363636;text-transform:uppercase;position:absolute;left:55px;top:8px;font-size:14px;}
+.art-refresh-but a small{color:#363636;font-size:10px;position:absolute;left:55px;bottom:5px;}
+.zajtrajsie_tabmodule ol li a{color:#0e76bc;}
+.floatbox{padding:11px 8px 11px 8px;border-bottom:none;background:#F7F7F7;}
+.articlec .quote .portrait{margin:0 20px 0 0;float:left;}
+.articlec .quote p{text-align:justify;padding:0;border:0;margin:0;}
+.articlec .quote .quotes{margin:0;float:left;}
+.share_more ul li{margin:0 0 10px 0;}
+a.sharelink{color:#3c3c3c;}
+#floatboxw,.floatbox ul,.articlec td{font-family:Trebuchet MS, Verdana, serif;}
+.disc a,.options a{text-decoration:none;}
+#suvcl-tab-box .ac,#suvcl-tab-box .ia{border-top:1px solid #a2a2a2;border-left:1px solid #a2a2a2;border-right:1px solid #a2a2a2;}
+.articlec p{margin:10px 0px 10px 0px;}
+#floatboxw .foto-autor{text-align:right;color:#777;}
+.disk2-topbox{border-bottom:1px solid #f0f0f0;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;line-height:1.3em;}
+.articlec h3{font-size:1.4em;color:#990003;margin-bottom:5px;margin-top:20px;font-weight:normal;}
+.articlec a{text-decoration:underline;}
+#suvcl-tab-box ul li{display:inline;font-size:14px;padding:4px 10px 5px 10px;margin:0 0 0 5px;line-height:30px;-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;-moz-border-radius-topleft:5px;-moz-border-radius-topright:5px;}
+.articlec h4,.articlec h5{color:#990003;margin-bottom:6px;margin-top:15px;font-weight:bold;}
+.cl-priloha-kviz .d{height:12px;}
+#otherartw.pages .otherart.r h5{margin:5px 5px 0px 5px;}
+.disc a{}
+.articlec .quote img{padding:0;border:0;margin:0;}
+.floatbox ul{color:#999999;font-size:1.1em;}
+.articlec li{line-height:1.4em;padding-bottom:0.4em;}
+.articlec table{border-collapse:collapse;border:1px solid #CECECE;border-right:none;font-size:1em;}
 .disk_header_right{float:right;width:10px;height:33px;background:url('/imgs/diskus_head_right.gif') no-repeat;}
-.zajtrajsie_tab_box{padding:5px 8px 10px 8px;position:relative;margin:10px 0 0 0;}
+.options a span{text-decoration:underline;}
+.articlec .autor_line{color:#777;}
+.cl-priloha-kviz .res-txt{padding-top:10px;font-size:16px;font-weight:bold;}
+.art-refresh-but a img{position:absolute;left:20px;top:7px;border:0;margin:0;}
 .zajtrajsie_tabmodule ol{color:#9b9b9b;margin:10px 0 0 0;padding:0 0 0 22px;}
-.cl-priloha-kviz .a{padding-bottom:4px;}
+#moreart ul a{color:#4c4c4c;}
+.disc:hover a{text-decoration:underline;}
+#moreart h4 img{padding:0px 5px 0px 0px;margin-top:0px;}
+.share_more,.zajtrajsie_tab_box h5{text-transform:none;position:absolute;}
+.disk2-box h4{font-size:15px;}
+.zajtrajsie_tabmodule{background:#FFFFFF;padding:10px;border:1px solid #C2C2C2;position:relative;border-top:none;}
+.articlec ul.disc{list-style:none;padding-left:5px;font-size:0.9em;}
 #suvcl-tab-box{font-family:Trebuchet MS, sans-serif;height:32px;background:url('/imgs/art-suvcl-tabs_bg.gif') repeat-x;padding:5px 0 2px 0;margin-top:5px;}
 #suvcl-tab-box .ia{color:#616161;border-bottom:1px solid #a2a2a2;background:#eee;padding:4px 10px 4px 10px !important;}
 .art-refresh-but{background:url('http://c.sme.sk/imgs/art/refresh_but-bg.png') no-repeat;width:490px;height:50px;padding:5px 0 0 0;margin:20px 0;}
-.art-refresh-but a:hover{background:#fff;}
-.art-refresh-but a img{position:absolute;left:20px;top:7px;border:0;margin:0;}
-.articlec td,#floatboxw,.floatbox ul{font-family:Trebuchet MS, Verdana, serif;}
-.articlec h5,span.sharespan{font-weight:bold;text-transform:none;}
-.otherart{width:230px;font-size:1em;position:relative;}
-#suvcl-tab-box ul li.ac a{text-decoration:none;}
-.cl-priloha-kviz .d{height:12px;}
-#suvcl-tab-box .ac{background:White;}
-.articlec TH{background:#D6D6D6;}
-.articlec a img{text-decoration:none;}
-.articlec td{padding:0.2em 0.7em 0.3em 0.7em;color:#333333;border-right:1px solid #CECECE;}
-.articlec .small{font-size:0.9em;}
-.disc a,.options a{text-decoration:none;}
-.zajtrajsie_tabmodule{background:#FFFFFF;padding:10px;border:1px solid #C2C2C2;position:relative;border-top:none;}
-.cl-priloha-kviz .v{margin:0 6px 0 2px;}
-#suvcl-tab-box .ia,#suvcl-tab-box .ac{border-top:1px solid #a2a2a2;border-left:1px solid #a2a2a2;border-right:1px solid #a2a2a2;}
-.articlec{font-family:Verdana, Arial, sans-serif;font-size:12px;line-height:1.7em;}
-.articlec h4{font-size:1.2em;font-weight:bold;}
-.articlec em{color:#444;font-style:italic;}
-.share_more ul li{margin:0 0 10px 0;}
-.articlec .tlac_spr{color:#777;font-size:90%;line-height:1.1em;}
-.art-refresh-but a .t{color:#363636;text-transform:uppercase;position:absolute;left:55px;top:8px;font-size:14px;}
-.zajtrajsie_tabmodule ol li{padding-bottom:0px;}
-.articlec h3{font-size:1.4em;color:#990003;margin-bottom:5px;margin-top:20px;font-weight:normal;}
-.articlec h5,.articlec h4{color:#990003;margin-bottom:6px;margin-top:15px;}
-.cl-priloha-kviz{text-align:left;}
-.disk2-box .go{padding-bottom:6px;}
-.articlec tr.l1{background:#FFFFFF;}
-span.sharespan{color:#3c3c3c;padding:0 5px 0 10px;}
-#suvcl-tab-box ul li{display:inline;font-size:14px;padding:4px 10px 5px 10px;margin:0 0 0 5px;line-height:30px;-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;-moz-border-radius-topleft:5px;-moz-border-radius-topright:5px;}
+.articlec .quote{padding:10px;border:0;margin:0;border:1px solid #cccccc;border-left:10px solid #cccccc;background:#fbfbfb;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;width:470px;}
 .articlec ul{list-style:disc;}
-.articlec h1{line-height:1.2em;}
-.otherart.l{float:left;}
-.options a{padding:0 0 0 2px;}
-.articlec li{line-height:1.4em;padding-bottom:0.4em;}
-.share_more ul li a{font-size:12px;color:#990003;}
-#share_more{display:none;}
-#suvcl-tab-box ul{margin:0;padding:0;}
-.articlec tr.l2{background:#E7E7E7;}
-.articlec .quote .quotes{margin:0;float:left;}
-.share_more,.zajtrajsie_tab_box h5{text-transform:none;position:absolute;}
-.articlec h5{font-size:1em;}
-.articlec .quote .portrait{margin:0 20px 0 0;float:left;}
-.articlec tr.vis1{background-color:#EEAAAA;color:#FFF;}
-#moreart li{padding:0px;}
-#otherartw{background:#F3F3F3;border-top:1px solid #999999;padding:5px 5px 10px 5px;margin-top:20px;}
-.disk_header_left{float:left;width:161px;height:33px;background:url('/imgs/diskus_head.gif') no-repeat;}
-.articlec .shootyimg{border:none;}
-#moreart ul a{color:#4c4c4c;}
-#moreart{padding:5px 0px 10px 0px;}
-.otherart h5{margin:0px 0px 0px 10px;}
-.otherart.r{float:right;text-align:right;}
-#otherartw.pages h5{margin:5px 0px 0px 5px;}
-#otherartw.pages .otherart.r h5{margin:5px 5px 0px 5px;}
-.cl-priloha-kviz .q{font-weight:bold;font-size:13px;}
-.articlec .art-perex{color:#666;}
-#floatboxw{float:right;width:334px;border-bottom:1px solid #CECECE;color:#333333;font-size:12px;margin-right:-8px;}
-.articlec .quote div{padding:0;border:0;padding:0;}
-#floatboxw H3{padding:0px 0px 2px 0px;margin:0px;}
-#floatboxw .foto-autor{text-align:right;color:#777;}
-.options a:hover{text-decoration:none;}
-.articlec a{text-decoration:underline;}
-.articlec .quote a{color:#9e0b13;}
-#moreart h4 img{padding:0px 5px 0px 0px;margin-top:0px;}
-.floatbox{padding:11px 8px 11px 8px;border-bottom:none;background:#F7F7F7;}
-.zajtrajsie_tab_box span.hdg{color:#0e76bc;font-size:16px;font-weight:bold;margin:0 0 5px 0;display:block;}
-#otherartw.pages{border-right:none;}
-a.sharelink{color:#3c3c3c;}
-.disk_header{height:33px;background:url('/imgs/diskus_head_bg.gif') repeat-x;margin:20px 0 10px 0;}
-.fblk{float:left;}
-.articlec .autor_line .copyr A{text-decoration:none;color:#777;}
-.share_more{background:White;border:1px solid #b8b8b8;left:645px;z-index:100;padding:10px 10px 0 10px;}
-.articlec .autor_line .copyr_sme{padding:2px 0px 2px 0px;font-size:10px !important;}
-.zajtrajsie_tab_box h5{color:#000000;font-size:18px;font-weight:normal;text-align:right;padding:0 20px 0 0;display:block;right:10px;top:15px;background:url('/imgs/ico_zajtrajsie_hdg.gif') no-repeat right;}
-.disc:hover a{text-decoration:underline;}
-.articlec ul.more li{padding-bottom:4px;}
-.floatbox ul{color:#999999;font-size:1.1em;}
-.articlec img{margin:5px 5px 5px 5px;}
-.articlec ul.disc{list-style:none;padding-left:5px;font-size:0.9em;}
-.dalejnasme IMG{border:none;margin:0px !important;}
-.otherart.r h5{margin:0px 15px 0px 0px;}
-.disk2-topbox p{padding-top:0px;margin-top:0px;}
-.options a span:hover{text-decoration:none;}
-.cl-priloha-kviz .a1{color:green;padding-bottom:4px;}
-#moreart ul{font-size:13px;padding:4px 0px 0px 37px;margin:0px;font-weight:bold;font-family:Trebuchet MS, Helvetica;}
-#floatboxw .foto-info{padding-top:4px;}
-.options a span{text-decoration:underline;}
-.articlec .quote .portrait .text{float:right;width:390px;}
-.articlec table{border-collapse:collapse;border:1px solid #CECECE;border-right:none;font-size:1em;}
-.articlec.col{width:500px;float:left;}
-#suvcl-tab-box ul li.ia a{color:#616161;}
 .disk2-box .new{padding-top:6px;}
-.dalejnasme{float:right;}
-.zajtrajsie_tabmodule ol li a{color:#0e76bc;}
-.cl-priloha-kviz .res-txt{padding-top:10px;font-size:16px;font-weight:bold;}
-.share_more ul{list-style:none;}
-.cl-priloha-kviz .res-but{width:200px;background-color:#AA0000;border:1px solid #000;text-align:center;color:#FFF;}
-.floatbox.extra2{background:none;border:none;padding-left:0px;padding-right:0px;}
-.articlec td.num{text-align:right;}
-.cl-priloha-kviz .a0{color:red;padding-bottom:4px;}
-.articlec p{margin:10px 0px 10px 0px;}
+#moreart img{border:none;}
+.floatbox.tabbed{padding:0px 0px 5px 0px;}
+.options a img{margin:-5px 3px 0 0 !important;}
+.articlec.col{width:500px;float:left;}
+.articlec tr.l2{background:#E7E7E7;}
+span.sharespan{color:#3c3c3c;font-weight:bold;text-transform:none;padding:0 5px 0 10px;}
+.articlec h5{font-size:1em;text-transform:none;}
+.articlec tr.l1{background:#FFFFFF;}
+.articlec .tlac_spr{color:#777;font-size:90%;line-height:1.1em;}
+.cl-priloha-kviz{text-align:left;}
 .art-refresh-but a{display:block;width:250px;height:45px;margin:0 auto;position:relative;text-decoration:none;background:#ffffff;background:-moz-linear-gradient(top, #ffffff 0%, #ececec 100%);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ececec));background:-webkit-linear-gradient(top, #ffffff 0%,#ececec 100%);background:-o-linear-gradient(top, #ffffff 0%,#ececec 100%);background:-ms-linear-gradient(top, #ffffff 0%,#ececec 100%);background:linear-gradient(top, #ffffff 0%,#ececec 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ececec',GradientType=0 );-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0px 3px 6px 0px rgba(0, 0, 0, 0.8);-moz-box-shadow:0px 3px 6px 0px rgba(0, 0, 0, 0.8);box-shadow:0px 3px 6px 0px rgba(0, 0, 0, 0.8);}
-.articlec ul.disc li{padding-bottom:2px;}
-.articlec .autor_line .copyr A:hover{text-decoration:underline;}
-.articlec .quote p{text-align:justify;padding:0;border:0;margin:0;}
-.art-refresh-but a small{color:#363636;font-size:10px;position:absolute;left:55px;bottom:5px;}
+.cl-priloha-kviz .a0{color:red;padding-bottom:4px;}
+.otherart.l{float:left;}
+.floatbox li{font-weight:normal;padding-bottom:10px;}
+.articlec ul.more{list-style:none;padding-left:5px;}
+.cl-priloha-kviz .q{font-weight:bold;font-size:13px;}
+.disk2-box{font-size:12px;padding-left:38px;}
+.zajtrajsie_tab_box{padding:5px 8px 10px 8px;position:relative;margin:10px 0 0 0;}
+.zajtrajsie_tab_box span.hdg{color:#0e76bc;font-size:16px;font-weight:bold;margin:0 0 5px 0;display:block;}
+.articlec .autor_line .copyr_sme{padding:2px 0px 2px 0px;font-size:10px !important;}
+.articlec a img{text-decoration:none;}
+.cl-priloha-kviz .a{padding-bottom:4px;}
+#share_more{display:none;}

@@ -11,12 +11,14 @@ var minFile;
 
 	@populationLength: total number of stylesheets in one population
 	@maxGenerations: maximum generations of algorithm
+	@roundOut: maximum generations without fitness improvement
 	@mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
 	@elites: number of elites which are automaticaly passed into a new generation
  */
 
 var populationLength = 50;
 var maxGenerations = 1000;
+var roundOut = 200;
 var mutateLine = 0.2;
 var elites = 2;
 
@@ -306,6 +308,9 @@ Q.fcall(function(){
 	var g = 0;
 	sort();
 
+	var lastFitness = 0;
+	var notChangedRounds = 0;
+
 	while (g < maxGenerations) {
 		g++;
 
@@ -328,6 +333,18 @@ Q.fcall(function(){
 		sort();
 		console.log('============');
 		console.log(g, population[0].fitness);
+
+		if (lastFitness == population[0].fitness) {
+			notChangedRounds++;
+		}
+		else {
+			notChangedRounds = 0;
+			lastFitness = population[0].fitness;
+		}
+
+		if (roundOut - 1 <= notChangedRounds) {
+			break;
+		}
 	}
 
 	return population[0];

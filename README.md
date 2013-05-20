@@ -15,6 +15,7 @@ $ node app.js yorr/css/file.css
 You can change these parameters:
 - @populationLength: total number of stylesheets in one population
 - @maxGenerations: maximum generations of algorithm
+- @roundOut: maximum generations without fitness improvement
 - @mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
 - @elites: number of elites which are automaticaly passed into a new generation
 
@@ -31,6 +32,11 @@ There is no crossover due to big differences between stylesheet in population.
 There are 2 types of mutation:
 - Mutation split: splits a random node with selectors into multiple nodes with one selector
 - Mutation merge: merges declarations from two nodes into one if it is possible
+
+### Final state
+There are 2 parameters where you can set when the algorithm stops:
+- @maxGenerations - maximum generations of algorithm
+- @roundOut - maximum generations without fitness improvement
 
 ### Known bugs:
 
