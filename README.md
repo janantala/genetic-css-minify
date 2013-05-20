@@ -17,7 +17,10 @@ You can change these parameters:
 - @maxGenerations: maximum generations of algorithm
 - @mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
 - @elites: number of elites which are automaticaly passed into a new generation
-  
+
+### Fitness
+Fitness function is difference between size of original css file and size of minified css file.
+
 ### Selection
 We use tournament method of size 2 for subject selection.
 
