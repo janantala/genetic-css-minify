@@ -38,9 +38,20 @@ There are 2 parameters where you can set when the algorithm stops:
 - @maxGenerations - maximum generations of algorithm
 - @roundOut - maximum generations without fitness improvement
 
+===
+
 ### Known bugs:
 
 - CSS3 selectors like @media, @keyframes with own scope are not processed.
+
+===
+
+### Road map:
+
+- add support for CSS3 selectors which generates own scope
+- match different written colors, e.g. white, #FFFFFF, rgb(255,255,255)
+- match margin, padding, border, e.g. convert margin-left, margin-rigth... into single margin
+- create a grunt task
 
 ===
 
