@@ -1,4 +1,4 @@
-/*.left {
+.left {
 	text-align: left;
 	color: green;
 	margin: 10em;
@@ -15,7 +15,7 @@
 
 .left, .right {
 	padding: 5px;
-}*/
+}
 
 .a, .b {
 	color: black;

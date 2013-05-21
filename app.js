@@ -18,7 +18,7 @@ var minFile;
 
 var populationLength = 50;
 var maxGenerations = 1000;
-var roundOut = 200;
+var roundOut = 2000;
 var mutateLine = 0.2;
 var elites = 2;
 
@@ -203,11 +203,13 @@ var mutateMerge = function(stylesheet) {
 		declarations1.remove(mayMerge);
 		declarations2.remove(mayMerge);
 
+		var remove = 0;
 		if (!declarations1.length) {
 			stylesheet.rules.splice(i1,1);
+			remove = i1 < i2 ? 1 : 0;
 		}
 		if (!declarations2.length) {
-			stylesheet.rules.splice(i2,1);
+			stylesheet.rules.splice(i2 - remove,1);
 		}
 
 		var o = {
