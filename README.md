@@ -26,7 +26,7 @@ Fitness function is difference between size of original css file and size of min
 We use tournament method of size 2 for subject selection.
 
 ### Crossover
-There is no crossover due to big differences between stylesheet in population.
+There is no crossover due to big differences between stylesheets in population.
 
 ### Mutation
 There are 2 types of mutation:

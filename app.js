@@ -40,6 +40,17 @@ Array.prototype.remove = function(a) {
 	return this;
 };
 
+Array.prototype.unique = function() {
+	var a = this.concat();
+	for (var i=0; i<a.length; ++i) {
+		for (var j=i+1; j<a.length; ++j) {
+			if (a[i] === a[j])
+			a.splice(j--, 1);
+		}
+	}
+	return a;
+};
+
 var clone = function(a) {
 	return JSON.parse(JSON.stringify(a));
 };
@@ -192,15 +203,22 @@ var mutateMerge = function(stylesheet) {
 		declarations1.remove(mayMerge);
 		declarations2.remove(mayMerge);
 
+		if (!declarations1.length) {
+			stylesheet.rules.splice(i1,1);
+		}
+		if (!declarations2.length) {
+			stylesheet.rules.splice(i2,1);
+		}
+
 		var o = {
-			'selectors': clone(selectors1).concat(clone(selectors2)),
+			'selectors': clone(selectors1).concat(clone(selectors2)).unique(),
 			'declarations': clone(mayMerge)
 		};
 
 		var added = false;
 		stylesheet.rules.forEach(function(rule){
 			if (checkArrays(rule.selectors, o.selectors)){
-				rule.declarations = rule.declarations.concat(clone(o.declarations));
+				rule.declarations = rule.declarations.concat(clone(o.declarations)).unique();
 				added = true;
 			}
 		});
@@ -221,7 +239,7 @@ var mutateSplit = function(stylesheet) {
 			var added = false;
 			stylesheet.rules.forEach(function(rule){
 				if ((rule.selectors.length == 1) && (rule.selectors[0] === selector)) {
-					rule.declarations = rule.declarations.concat(clone(r1.declarations));
+					rule.declarations = rule.declarations.concat(clone(r1.declarations)).unique();
 					added = true;
 				}
 			});
