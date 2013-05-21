@@ -14,6 +14,7 @@ var minFile;
 	@roundOut: maximum generations without fitness improvement
 	@mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
 	@elites: number of elites which are automaticaly passed into a new generation
+	@selection: selection method - 'tournament' or 'roulllete'
  */
 
 var populationLength = 50;
@@ -21,6 +22,7 @@ var maxGenerations = 1000;
 var roundOut = 2000;
 var mutateLine = 0.2;
 var elites = 2;
+var selection = 'tournament';
 
 var population = [];
 var cssSize = 0;
@@ -123,6 +125,27 @@ var tournament = function() {
 		return clone(population[i2]);
 	}
 };
+
+var rouletteWheel = function() {
+	var fitness = 0;
+	population.forEach(function(subject){
+		fitness += subject.fitness;
+	});
+
+	var f = Math.floor(Math.random() * (fitness));
+
+	fitness = 0;
+	subject = population[0];
+	for (var i=0; i<populationLength; i++) {
+		fitness += population[i].fitness;
+		if (f > fitness) {
+			break;
+		}
+		subject = population[i];
+	}
+
+	return clone(subject);
+}
 
 var countSize = function(stylesheet) {
 	var s = 0;
@@ -338,7 +361,17 @@ Q.fcall(function(){
 		addElites(newPopulation);
 
 		while (newPopulation.length < populationLength) {
-			var ss = crossover(tournament(), tournament());
+			var ss;
+
+			if (selection == 'tournament') {
+				ss = crossover(tournament(), tournament());
+			}
+			else if (selection == 'roulllete') {
+				crossover(rouletteWheel(), rouletteWheel());
+			}
+			else {
+				ss = crossover(tournament(), tournament());
+			}
 			mutate(ss.s1);
 			mutate(ss.s2);
 

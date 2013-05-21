@@ -18,12 +18,13 @@ You can change these parameters:
 - @roundOut: maximum generations without fitness improvement
 - @mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
 - @elites: number of elites which are automaticaly passed into a new generation
+- @selection: selection method - 'tournament' or 'roulllete'
 
 ### Fitness
 Fitness function is difference between size of original css file and size of minified css file.
 
 ### Selection
-We use tournament method of size 2 for subject selection.
+We use tournament method of size 2 for subject selection. There is also available roulete wheel method in settings.
 
 ### Crossover
 There is no crossover due to big differences between stylesheets in population.
