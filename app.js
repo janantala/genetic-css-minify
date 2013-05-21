@@ -9,20 +9,24 @@ var minFile;
 	Genetic CSS minify
 	run: $ node app.js your/css/file.css
 
-	@populationLength: total number of stylesheets in one population
-	@maxGenerations: maximum generations of algorithm
-	@roundOut: maximum generations without fitness improvement
-	@mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
-	@elites: number of elites which are automaticaly passed into a new generation
-	@selection: selection method - 'tournament' or 'roulllete'
+	@options.populationLength: total number of stylesheets in one population
+	@options.maxGenerations: maximum generations of algorithm
+	@options.roundOut: maximum generations without fitness improvement
+	@options.mutateLine: line between mutateSplit <0,options.mutateLine) and mutateMerge <options.mutateLine,1)
+	@options.crossover: crossover propability
+	@options.elites: number of options.elites which are automaticaly passed into a new generation
+	@options.selection: options.selection method - 'tournament' or 'roulllete'
  */
 
-var populationLength = 50;
-var maxGenerations = 1000;
-var roundOut = 2000;
-var mutateLine = 0.2;
-var elites = 2;
-var selection = 'tournament';
+var options = {
+	populationLength: 50,
+	maxGenerations: 3000,
+	roundOut: 1000,
+	mutateLine: 0.2,
+	crossover: 0.2,
+	elites: 2,
+	selection: 'tournament'
+};
 
 var population = [];
 var cssSize = 0;
@@ -97,7 +101,7 @@ var parseCSS = function(tree) {
  */
 
 var addElites = function(newPopulation) {
-	for (var i=0; i<elites; i++) {
+	for (var i=0; i<options.elites; i++) {
 		newPopulation.push(clone(population[i]));
 	}
 };
@@ -115,8 +119,8 @@ var sort = function() {
 };
 
 var tournament = function() {
-	var i1 = Math.floor(Math.random() * (populationLength));
-	var i2 = Math.floor(Math.random() * (populationLength));
+	var i1 = Math.floor(Math.random() * (options.populationLength));
+	var i2 = Math.floor(Math.random() * (options.populationLength));
 
 	if (population[i1].fitness > population[i2].fitness) {
 		return clone(population[i1]);
@@ -136,7 +140,7 @@ var rouletteWheel = function() {
 
 	fitness = 0;
 	subject = population[0];
-	for (var i=0; i<populationLength; i++) {
+	for (var i=0; i<options.populationLength; i++) {
 		fitness += population[i].fitness;
 		if (f > fitness) {
 			break;
@@ -189,7 +193,7 @@ var getFitness = function(stylesheet) {
 
 var mutate = function(stylesheet) {
 	var random = Math.random();
-	if (random < mutateLine) {
+	if (random < options.mutateLine) {
 		mutateSplit(stylesheet);
 	}
 	else if (random < 1.0) {
@@ -287,10 +291,34 @@ var mutateSplit = function(stylesheet) {
 
 var crossover = function(s1, s2) {
 
-	return {
-		's1': s1,
-		's2': s2
-	};
+	if (Math.random() < options.crossover) {
+
+		var s1mid = Math.floor(Math.random() * (s1.rules.length));
+		var s1l = s1.rules.slice(0,s1mid); 
+		var s1r = s1.rules.slice(s1mid); 
+
+
+		var s2mid = Math.floor(Math.random() * (s2.rules.length));
+		var s2l = s2.rules.slice(0,s2mid); 
+		var s2r = s2.rules.slice(s2mid); 
+
+		return {
+			's1': {
+				'rules': clone(s1l).concat(clone(s2r)).concat(clone(s1r)).unique(),
+				'fitness': 0
+			},
+			's2': {
+				'rules': clone(s2l).concat(clone(s1r)).concat(clone(s2r)).unique(),
+				'fitness': 0
+			},
+		};
+	}
+	else {
+		return {
+			's1': s1,
+			's2': s2
+		};
+	}
 };
 
 
@@ -337,7 +365,7 @@ Q.fcall(function(){
 	countSize(stylesheet);
 	stylesheet.fitness = 0;
 
-	for (var i=0; i<populationLength; i++) {
+	for (var i=0; i<options.populationLength; i++) {
 		population.push(clone(stylesheet));
 	}
 })
@@ -354,19 +382,19 @@ Q.fcall(function(){
 	var lastFitness = 0;
 	var notChangedRounds = 0;
 
-	while (g < maxGenerations) {
+	while (g < options.maxGenerations) {
 		g++;
 
 		var newPopulation = [];
 		addElites(newPopulation);
 
-		while (newPopulation.length < populationLength) {
+		while (newPopulation.length < options.populationLength) {
 			var ss;
 
-			if (selection == 'tournament') {
+			if (options.selection == 'tournament') {
 				ss = crossover(tournament(), tournament());
 			}
-			else if (selection == 'roulllete') {
+			else if (options.selection == 'roulllete') {
 				crossover(rouletteWheel(), rouletteWheel());
 			}
 			else {
@@ -395,7 +423,7 @@ Q.fcall(function(){
 			lastFitness = population[0].fitness;
 		}
 
-		if (roundOut - 1 <= notChangedRounds) {
+		if (options.roundOut - 1 <= notChangedRounds) {
 			break;
 		}
 	}

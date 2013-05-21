@@ -13,12 +13,13 @@ $ node app.js yorr/css/file.css
 
 ### Customization:
 You can change these parameters:
-- @populationLength: total number of stylesheets in one population
-- @maxGenerations: maximum generations of algorithm
-- @roundOut: maximum generations without fitness improvement
-- @mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
-- @elites: number of elites which are automaticaly passed into a new generation
-- @selection: selection method - 'tournament' or 'roulllete'
+- @options.populationLength: total number of stylesheets in one population
+- @options.maxGenerations: maximum generations of algorithm
+- @options.roundOut: maximum generations without fitness improvement
+- @options.mutateLine: line between mutateSplit <0,mutateLine) and mutateMerge <mutateLine,1)
+- @options.crossover: crossover propability
+- @options.elites: number of elites which are automaticaly passed into a new generation
+- @options.selection: selection method - 'tournament' or 'roulllete'
 
 ### Fitness
 Fitness function is difference between size of original css file and size of minified css file.
@@ -27,7 +28,7 @@ Fitness function is difference between size of original css file and size of min
 We use tournament method of size 2 for subject selection. There is also available roulete wheel method in settings.
 
 ### Crossover
-There is no crossover due to big differences between stylesheets in population.
+Crossover takes 2 stylesheets. Creates two new stylesheets. Each contains of the first half of the first stylesheet concates with the second half of the seconds stylesheets. There are also concated rules from the original second half of stylesheet.
 
 ### Mutation
 There are 2 types of mutation:

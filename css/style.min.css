@@ -1,4 +1,4 @@
-.a,.b{color:black;}
 .right,.left{padding:5px;color:green;margin:10em;}
+.b,.a{color:black;}
 .left{text-align:left;float:left;}
 .right{float:right;text-align:right;font-weight:bold;}
