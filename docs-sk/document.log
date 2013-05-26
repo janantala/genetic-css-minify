@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  26 MAY 2013 17:16
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  27 MAY 2013 01:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**"/Users/janantala/Dropbox/FIIT/SEM8/EA/CSS minify/document.tex"
-(/Users/janantala/Dropbox/FIIT/SEM8/EA/CSS minify/document.tex
+**/Users/janantala/Dropbox/Web/genetic-css-minify/docs-sk/document.tex
+(/Users/janantala/Dropbox/Web/genetic-css-minify/docs-sk/document.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman-x-2009-06-19, ngerman-x-2009-06-19, afrikaans, ancientgreek, ibycus, arabi
@@ -694,62 +694,61 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
- [2] [3]
-<rules.png, id=28, 433.62pt x 294.09875pt>
+ [2]
+<rules.png, id=25, 433.62pt x 294.09875pt>
 File: rules.png Graphic file (type png)
  <use rules.png>
 Package pdftex.def Info: rules.png used on input line 143.
 (pdftex.def)             Requested size: 212.29312pt x 143.98848pt.
- [4 <./rules.png>]
-<population.png, id=34, 895.345pt x 476.78125pt>
+ [3 <./rules.png>]
+<population.png, id=31, 895.345pt x 476.78125pt>
 File: population.png Graphic file (type png)
  <use population.png>
 Package pdftex.def Info: population.png used on input line 194.
 (pdftex.def)             Requested size: 424.58624pt x 226.1024pt.
-
-<selection.png, id=35, 766.865pt x 513.92pt>
+ [4 <./population.png (PNG copy)>] <selection.png, id=35, 766.865pt x 513.92pt>
 File: selection.png Graphic file (type png)
- <use selection.png>
+
+<use selection.png>
 Package pdftex.def Info: selection.png used on input line 224.
 (pdftex.def)             Requested size: 424.58624pt x 284.5389pt.
- [5 <./population.png (PNG copy)>] <elites.png, id=40, 940.51375pt x 495.8525pt
->
+ [5 <./selection.png (PNG copy)>]
+<elites.png, id=40, 940.51375pt x 495.8525pt>
 File: elites.png Graphic file (type png)
-
-<use elites.png>
+ <use elites.png>
 Package pdftex.def Info: elites.png used on input line 255.
 (pdftex.def)             Requested size: 424.58624pt x 223.85034pt.
- [6 <./selection.png (PNG copy)>]
-<crossover.png, id=44, 845.1575pt x 510.90875pt>
+
+<crossover.png, id=41, 845.1575pt x 510.90875pt>
 File: crossover.png Graphic file (type png)
  <use crossover.png>
 Package pdftex.def Info: crossover.png used on input line 285.
 (pdftex.def)             Requested size: 424.58624pt x 256.66989pt.
- [7 <./elites.png (PNG copy)>] <mutation.png, id=48, 782.925pt x 517.935pt>
+ [6 <./elites.png (PNG copy)>] <mutation.png, id=45, 782.925pt x 517.935pt>
 File: mutation.png Graphic file (type png)
 
 <use mutation.png>
 Package pdftex.def Info: mutation.png used on input line 315.
 (pdftex.def)             Requested size: 424.58624pt x 280.88199pt.
- [8 <./crossover.png (PNG copy)>] [9 <./mutation.png (PNG copy)>] [10]
+ [7 <./crossover.png (PNG copy)>] [8 <./mutation.png (PNG copy)>] [9]
 LaTeX Font Info:    Try loading font information for TS1+lmr on input line 394.
 
  (/usr/local/texlive/2011/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
-(./document.bbl) [11] (./document.aux)
+(./document.bbl) [10] (./document.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  9357 strings out of 493633
- 132532 string characters out of 3143378
- 221919 words of memory out of 3000000
+ 132551 string characters out of 3143378
+ 222919 words of memory out of 3000000
  12419 multiletter control sequences out of 15000+200000
  81446 words of font info for 73 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 38i,8n,54p,613b,602s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,54p,618b,602s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
 /texlive/2011/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2011/
 texmf-dist/fonts/type1/public/lm/lmb10.pfb></usr/local/texlive/2011/texmf-dist/
@@ -762,10 +761,10 @@ m/lmr12.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/lm/lmr17.pfb
 /fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2011/texmf-dist/fonts/typ
 e1/public/lm/lmtt12.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/
 lm/lmtt8.pfb>
-Output written on document.pdf (13 pages, 383022 bytes).
+Output written on document.pdf (12 pages, 382774 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
