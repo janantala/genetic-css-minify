@@ -2,12 +2,15 @@
 
 ### CSS minification based on genetic principes
 
-Work in progress...
+install dependencies:
 
-### Run: 
-```bash 
-$ node app.js yorr/css/file.css
-```
+    $ npm install
+
+run app:
+
+    $ node app.js your/css/file.css
+
+Read extended docs and experiments in [PDF](https://github.com/janantala/genetic-css-minify/blob/master/docs-sk/document.pdf?raw=true) [SK]
 
 ===
 
