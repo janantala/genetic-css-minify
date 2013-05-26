@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: document.aux
+The style file: csplainnat.bst
+Database file #1: bib.bib.bib
+Warning--empty booktitle in min
+Warning--empty booktitle in css
+Warning--empty year in css
+Warning--empty year in css
+Warning--empty booktitle in size
+You've used 4 entries,
+            2953 wiz_defined-function locations,
+            644 strings with 5472 characters,
+and the built_in function-call counts, 1484 in all, are:
+= -- 113
+> -- 64
+< -- 3
++ -- 22
+- -- 18
+* -- 87
+:= -- 239
+add.period$ -- 13
+call.type$ -- 4
+change.case$ -- 16
+chr.to.int$ -- 4
+cite$ -- 13
+duplicate$ -- 91
+empty$ -- 156
+format.name$ -- 28
+if$ -- 310
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 3
+newline$ -- 29
+num.names$ -- 20
+pop$ -- 61
+preamble$ -- 1
+purify$ -- 10
+quote$ -- 0
+skip$ -- 50
+stack$ -- 0
+substring$ -- 8
+swap$ -- 4
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 44
+warning$ -- 5
+while$ -- 12
+width$ -- 0
+write$ -- 54
+(There were 5 warnings)

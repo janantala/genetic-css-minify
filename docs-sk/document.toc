@@ -1,0 +1,24 @@
+\select@language {slovak}
+\select@language {slovak}
+\contentsline {section}{\numberline {1}Zadanie}{1}
+\contentsline {section}{\numberline {2}\IeC {\'U}vod}{1}
+\contentsline {section}{\numberline {3}Algoritmus}{2}
+\contentsline {subsection}{\numberline {3.1}Fitness}{2}
+\contentsline {subsection}{\numberline {3.2}Selekcia}{2}
+\contentsline {subsubsection}{\numberline {3.2.1}Turnaj}{2}
+\contentsline {subsubsection}{\numberline {3.2.2}Ruleta}{3}
+\contentsline {subsection}{\numberline {3.3}Kr\IeC {\'\i }\IeC {\v z}enie}{3}
+\contentsline {subsection}{\numberline {3.4}Mut\IeC {\'a}cia}{3}
+\contentsline {subsubsection}{\numberline {3.4.1}Mut\IeC {\'a}cia delenia}{3}
+\contentsline {subsubsection}{\numberline {3.4.2}Mut\IeC {\'a}cia sp\IeC {\'a}jania}{4}
+\contentsline {subsection}{\numberline {3.5}Elitizmus}{4}
+\contentsline {subsection}{\numberline {3.6}Koncov\IeC {\'y} stav}{4}
+\contentsline {section}{\numberline {4}Experimenty}{4}
+\contentsline {subsection}{\numberline {4.1}Ve\IeC {\v l}kos\IeC {\v t} popul\IeC {\'a}cie}{4}
+\contentsline {subsection}{\numberline {4.2}Selekcia}{5}
+\contentsline {subsection}{\numberline {4.3}Elitizmus}{6}
+\contentsline {subsection}{\numberline {4.4}Pravdepodobnos\IeC {\v t} kr\IeC {\'\i }\IeC {\v z}enia}{7}
+\contentsline {subsection}{\numberline {4.5}Pravdepodobnos\IeC {\v t} mut\IeC {\'a}cie}{8}
+\contentsline {section}{\numberline {5}Obmedzenia programu}{9}
+\contentsline {section}{\numberline {6}Mo\IeC {\v z}n\IeC {\'e} vylep\IeC {\v s}enia}{10}
+\contentsline {section}{\numberline {7}Z\IeC {\'a}ver}{11}
