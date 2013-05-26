@@ -1,7 +1,7 @@
 {
   "name": "genetic-css-minify",
-  "version": "0.0.1",
-  "author": "Jan Antala <support@nodejitsu.com>",
+  "version": "1.0.0",
+  "author": "Jan Antala <janantala@janantala.com>",
   "description": "CSS minification based on genetic principes",
   "keywords": [
     "css",
