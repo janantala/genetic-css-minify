@@ -20,10 +20,10 @@ var minFile;
 
 var options = {
 	populationLength: 50,
-	maxGenerations: 3000,
+	maxGenerations: 10000,
 	roundOut: 1000,
 	mutateLine: 0.2,
-	crossover: 0.2,
+	crossover: 0,
 	elites: 2,
 	selection: 'tournament'
 };
@@ -395,7 +395,7 @@ Q.fcall(function(){
 				ss = crossover(tournament(), tournament());
 			}
 			else if (options.selection == 'roulllete') {
-				crossover(rouletteWheel(), rouletteWheel());
+				ss = crossover(rouletteWheel(), rouletteWheel());
 			}
 			else {
 				ss = crossover(tournament(), tournament());
@@ -412,8 +412,9 @@ Q.fcall(function(){
 
 		population = newPopulation;
 		sort();
-		console.log('============');
-		console.log(g, population[0].fitness);
+		// console.log('============');
+		// console.log(g, population[0].fitness);
+		console.log(population[0].fitness);
 
 		if (lastFitness == population[0].fitness) {
 			notChangedRounds++;
@@ -436,7 +437,7 @@ Q.fcall(function(){
  */
 
 .then(function(tree){
-	console.log(util.inspect(tree, false, null));
+	// console.log(util.inspect(tree, false, null));
 	var css = '';
 	tree.rules.forEach(function(rule) {
 		css += rule.selectors.join(',');
